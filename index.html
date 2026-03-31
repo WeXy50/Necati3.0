@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kanıtlanamaz Gerçeklik | Tesseract</title>
+    <meta name="description" content="Matematik, mantık ve gerçekliği araştıran interaktif, kavramsal bir dijital deneyim.">
+    <link rel="stylesheet" href="./style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500&family=Inter:wght@200;400;600&display=swap" rel="stylesheet">
+    <!-- Import map for Vanilla ES module loading via CDN -->
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://unpkg.com/three@0.160.0/build/three.module.js"
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <!-- Fullscreen Three.js Background -->
+    <div id="canvas-container"></div>
+    
+    <!-- Screen Glitch Overlay -->
+    <div id="glitch-overlay"></div>
+
+    <!-- HUD Overlay -->
+    <div id="hud">
+      <div class="hud-topline"></div>
+      <div class="hud-bottomline"></div>
+      <div class="hud-leftline"></div>
+      <div class="hud-rightline"></div>
+      
+      <div class="hud-time" id="hud-clock">00:00:00</div>
+      <div class="hud-coords">KOORD: 47.3769° N, 8.5417° E</div>
+      <div class="hud-logo">SİS.GERÇEKLİK_v2.1</div>
+
+      <div class="hud-love">Sizi seviyoruz Necati Sezer ❤️</div>
+    </div>
+
+    <!-- Core Toggle Button -->
+    <div id="change-reality-container">
+      <button id="change-reality-btn">
+        <span class="btn-text">GERÇEKLİĞİ DEĞİŞTİR</span>
+        <span class="btn-glitch"></span>
+      </button>
+    </div>
+
+    <!-- Content Controller -->
+    <main id="reality-container">
+      
+      <!-- REALITY A: CHAOS THEORY (White/Cyan Theme) -->
+      <section id="reality-a" class="reality-layer active">
+        <!-- Connecting SVG Lines -->
+        <svg class="connection-lines" width="100%" height="100%">
+          <line x1="20%" y1="30%" x2="50%" y2="50%" />
+          <line x1="50%" y1="50%" x2="70%" y2="25%" />
+          <line x1="70%" y1="25%" x2="80%" y2="60%" />
+        </svg>
+
+        <div class="hud-window window-1" style="top: 20%; left: 10%;">
+          <div class="window-header">
+            <span>VERİ.LORENZ_1961</span>
+            <div class="window-controls">
+              <span class="window-expand">[GENİŞLET]</span>
+              <span class="window-close">X</span>
+            </div>
+          </div>
+          <div class="window-body">
+            <img src="./lorenz.png" alt="Edward Lorenz" class="glitch-img" />
+            <h3>EDWARD LORENZ</h3>
+            <p class="summary-text">Kaos teorisinin öncüsü. Başlangıç koşullarındaki küçük değişikliklerin öngörülemeyen sonuçlar doğurduğunu keşfetti. Ayrıntılar için tıklayın.</p>
+            
+            <div class="expanded-content">
+              <div class="math-block">
+                <h4>SİSTEMATİK DENKLEMLER</h4>
+                <p>Belirleyici (deterministik) ama aynı zamanda öngörülemez. Orijinal Lorenz diferansiyel denklemleri atmosferik konveksiyonun en basitleştirilmiş halidir:</p>
+                <div class="formula-box">
+                  dx/dt = σ(y - x) <br>
+                  dy/dt = x(ρ - z) - y <br>
+                  dz/dt = xy - βz
+                </div>
+                <p>Burada <strong>x</strong> konveksiyon hızını, <strong>y</strong> ve <strong>z</strong> sıcaklık farklarını temsil eder. Doğrusal olmayan bu karmaşa, doğanın tam olarak formüle edilebileceğini ancak uzun vadede <strong>asla tahmin edilemeyeceğini</strong> matematiksel olarak ıspatlar.</p>
+              </div>
+              <div class="animation-block">
+                <svg class="anim-svg spinning-svg" viewBox="0 0 100 100">
+                  <path d="M50 0 L100 50 L50 100 L0 50 Z" stroke="currentColor" fill="none" class="neon-stroke"/>
+                  <circle cx="50" cy="50" r="30" stroke="currentColor" fill="none" class="neon-stroke" />
+                  <circle cx="50" cy="50" r="10" stroke="currentColor" fill="none" class="neon-stroke" />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="hud-window window-2 center-aligned" style="top: 40%; left: 35%;">
+          <h1 class="glitch-text-hover">KAOS TEORİSİ</h1>
+          <p class="subtitle">Öngörülebilirlik bir yanılsamadır.</p>
+        </div>
+
+        <div class="hud-window window-3" style="top: 15%; right: 10%;">
+          <div class="window-header">
+            <span>GÖZLEM.KELEBEK</span>
+            <div class="window-controls">
+              <span class="window-expand">[GENİŞLET]</span>
+              <span class="window-close">X</span>
+            </div>
+          </div>
+          <div class="window-body">
+            <img src="./butterfly.png" alt="Kelebek Etkisi" class="glitch-img" />
+            <h3>KELEBEK ETKİSİ</h3>
+            <p class="summary-text">Başlangıç noktasındaki en küçük yuvarlama hatası evrenin sonunu değiştirebilir.</p>
+            
+            <div class="expanded-content">
+              <div class="math-block">
+                <h4>HASSAS BAĞIMLILIK (SENSITIVE DEPENDENCE)</h4>
+                <p>Lorenz ilk deneyi sırasında bilgisayarında yuvarlanmış rakamlar (0.506127 yerine 0.506) kullandı. Sadece on binde birlik bir farklılık, birkaç döngü sonra tamamen benzersiz bir hava durumu deseni yarattı.</p>
+                <div class="formula-box">
+                  f(x₀ + δ) ≈ f(x₀)e^(λt)
+                </div>
+                <p>Bu denklemde λ (Lyapunov üssü) sıfırdan büyüktür. Yani başlangıç koşullarındaki δ hatası zamanla (t) eksponansiyel olarak büyüyerek kaosa evrilir. Vektörel çekim sistemi sonsuza kadar kendi etrafında döner ama <strong>hiçbir zaman aynı noktadan iki kez geçmez</strong>.</p>
+              </div>
+              <div class="animation-block">
+                <svg class="anim-svg orbiting-svg" viewBox="0 0 100 100">
+                  <ellipse cx="50" cy="50" rx="40" ry="10" stroke="currentColor" fill="none" class="neon-stroke" transform="rotate(45 50 50)" />
+                  <ellipse cx="50" cy="50" rx="40" ry="10" stroke="currentColor" fill="none" class="neon-stroke" transform="rotate(-45 50 50)" />
+                  <circle cx="50" cy="50" r="4" fill="currentColor" class="neon-fill heartbeat" />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- REALITY B: 4TH DIMENSION (Black/White Theme) -->
+      <section id="reality-b" class="reality-layer hidden">
+        <svg class="connection-lines" width="100%" height="100%">
+          <line x1="30%" y1="20%" x2="50%" y2="50%" />
+          <line x1="50%" y1="50%" x2="60%" y2="70%" />
+        </svg>
+
+        <div class="hud-window window-4" style="top: 15%; left: 15%;">
+          <div class="window-header">
+            <span>TESSERACT.BOYUT_4</span>
+            <div class="window-controls">
+              <span class="window-expand">[GENİŞLET]</span>
+              <span class="window-close">X</span>
+            </div>
+          </div>
+          <div class="window-body">
+            <!-- Using high res static for better tech aesthetics -->
+            <img src="./tesseract.png" alt="4B Hiperküp" class="glitch-img invert-img" />
+            <h3>TESSERACT (HİPERKÜP)</h3>
+            <p class="summary-text">Küpün dört boyutlu analoğu. Görünmez uzayda dönerken sadece onun 3 boyutlu gölgesini algılayabiliriz.</p>
+            
+            <div class="expanded-content">
+              <div class="math-block">
+                <h4>N-BOYUTLU ÖKLİD UZAYI (R⁴)</h4>
+                <p>Bir kareyi (2B) z ekseninde uzatarak nasıl bir küp (3B) elde ediyorsak, bir küpü de algılayamadığımız 4. mekansal koordinat ekseni <strong>w</strong> yönünde uzattığımızda Tesseract elde ederiz.</p>
+                <div class="formula-box">
+                  Kalkan Vektörü: (x, y, z, w)<br>
+                  P = { (±1, ±1, ±1, ±1) }
+                </div>
+                <p>Bir tesseract 16 köşeye (vertex), 32 ayrıta (edge), 24 kare yüze (face) ve 8 kübik hücreye (cell) sahiptir. İç içe geçiyor gibi görünmesinin tek sebebi, gözlerimizin stereografik izdüşüm illüzyonuna düşmesidir. Matematikte her şey ispatlanmış olsa da, zihnimiz bu mutlak durumu simüle edemez.</p>
+              </div>
+              <div class="animation-block">
+                <svg class="anim-svg multi-rotate-svg" viewBox="0 0 100 100">
+                  <rect x="25" y="25" width="50" height="50" stroke="currentColor" fill="none" class="neon-stroke" />
+                  <rect x="35" y="35" width="30" height="30" stroke="currentColor" fill="none" class="neon-stroke" />
+                  <line x1="25" y1="25" x2="35" y2="35" stroke="currentColor" class="neon-stroke" />
+                  <line x1="75" y1="25" x2="65" y2="35" stroke="currentColor" class="neon-stroke" />
+                  <line x1="25" y1="75" x2="35" y2="65" stroke="currentColor" class="neon-stroke" />
+                  <line x1="75" y1="75" x2="65" y2="65" stroke="currentColor" class="neon-stroke" />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="hud-window window-5 center-aligned" style="top: 45%; right: 20%;">
+          <h1 class="glitch-text-hover">4. BOYUT</h1>
+          <p class="subtitle">Mekansal algının ötesinde. Matematiksel bir kesinlik, ancak deneyimsel olarak kanıtlanamaz.</p>
+        </div>
+
+      </section>
+
+    </main>
+
+    <script type="module" src="./js/main.js"></script>
+  </body>
+</html>
